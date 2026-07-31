@@ -1,0 +1,142 @@
+---
+const links = [
+  { label: 'GitHub', href: 'https://github.com/444jean', handle: '@444jean' },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/jean-venegas', handle: '/jean-venegas' },
+  { label: 'Teléfono', href: 'tel:+56950365627', handle: '+56 9 5036 5627' },
+];
+---
+
+<footer id="contacto" class="contact">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="container inner">
+    <p class="section-kicker reveal">06 / contacto</p>
+    <h2 class="reveal">¿Trabajamos <span class="gradient">juntos</span>?</h2>
+    <p class="lead reveal">
+      Estoy siempre abierto a nuevas oportunidades, proyectos y colaboraciones.
+      Escríbeme y conversemos.
+    </p>
+    <a href="mailto:je.venegasa@duocuc.cl" class="email reveal">je.venegasa@duocuc.cl</a>
+    <div class="links reveal">
+      {links.map((link) => (
+        <a href={link.href} target="_blank" rel="noopener">
+          <span class="label">{link.label}</span>
+          <span class="handle">{link.handle}</span>
+        </a>
+      ))}
+    </div>
+    <p class="copy">© 2026 Jean Venegas — Santiago, Chile</p>
+  </div>
+</footer>
+
+<style>
+  .contact {
+    position: relative;
+    padding: 7rem 0 3rem;
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .glow {
+    position: absolute;
+    bottom: -40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70vw;
+    height: 50vw;
+    max-width: 900px;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.18), transparent 65%);
+    pointer-events: none;
+  }
+
+  .inner {
+    position: relative;
+  }
+
+  .section-kicker {
+    justify-content: center;
+  }
+
+  .section-kicker::after {
+    display: none;
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .gradient {
+    background: linear-gradient(120deg, var(--purple-light), var(--purple-deep));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .lead {
+    max-width: 30rem;
+    margin: 1rem auto 0;
+    color: var(--muted);
+  }
+
+  .email {
+    display: inline-block;
+    margin-top: 2rem;
+    font-family: var(--font-mono);
+    font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+    color: var(--text);
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    padding: 0.9rem 1.8rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .email:hover {
+    border-color: var(--purple);
+    box-shadow: 0 8px 32px rgba(124, 58, 237, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    margin-top: 3rem;
+  }
+
+  .links a {
+    display: grid;
+    gap: 0.1rem;
+    text-align: center;
+  }
+
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .handle {
+    font-size: 0.9rem;
+    color: var(--purple-light);
+    transition: color 0.2s ease;
+  }
+
+  .links a:hover .handle {
+    color: var(--text);
+  }
+
+  .copy {
+    margin-top: 4.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    opacity: 0.7;
+  }
+</style>

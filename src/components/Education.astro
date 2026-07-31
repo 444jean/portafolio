@@ -1,0 +1,138 @@
+---
+const education = [
+  {
+    school: 'Duoc UC',
+    degree: 'Ingeniería en Informática',
+    period: '2021 — 2025',
+    location: 'Santiago, Chile',
+  },
+  {
+    school: 'Instituto Tecnológico San Mateo',
+    degree: 'Técnico en Contabilidad',
+    period: '2017 — 2020',
+    location: 'Santiago, Chile',
+  },
+];
+
+const certifications = [
+  'Python Fundamentals — Cisco Networking Academy',
+  'Arquitectura de Software',
+  'Gestión de proyectos informáticos',
+  'Inteligencia de negocios',
+  'Análisis y planificación de requerimientos informáticos',
+];
+---
+
+<section id="educacion" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="section-kicker">05 / educacion</p>
+      <h2 class="section-title">Educación y certificaciones</h2>
+    </div>
+    <div class="grid">
+      <div class="column reveal">
+        <h3 class="column-title">Educación</h3>
+        <div class="cards">
+          {education.map((item) => (
+            <article class="card">
+              <h4>{item.school}</h4>
+              <p class="degree">{item.degree}</p>
+              <p class="meta">{item.period} · {item.location}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div class="column reveal">
+        <h3 class="column-title">Certificaciones</h3>
+        <ul class="certs">
+          {certifications.map((cert) => (
+            <li>{cert}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .column-title {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 1.25rem;
+  }
+
+  .cards {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.3rem 1.5rem;
+    transition: border-color 0.2s ease;
+  }
+
+  .card:hover {
+    border-color: var(--border-strong);
+  }
+
+  h4 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  .degree {
+    font-size: 0.9rem;
+    color: var(--purple-light);
+    margin-top: 0.15rem;
+  }
+
+  .meta {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.5rem;
+  }
+
+  .certs {
+    list-style: none;
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .certs li {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--purple-deep);
+    border-radius: 8px;
+    padding: 0.75rem 1.1rem;
+    font-size: 0.88rem;
+    color: var(--muted);
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .certs li:hover {
+    border-left-color: var(--purple);
+    color: var(--text);
+  }
+
+  @media (max-width: 820px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

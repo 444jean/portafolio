@@ -1,0 +1,139 @@
+---
+const jobs = [
+  {
+    role: 'Desarrollador Full-Stack',
+    company: 'Cramer',
+    location: 'Santiago, Chile',
+    period: 'Jun 2025 — Actualidad',
+    current: true,
+    bullets: [
+      'Creación de aplicaciones web desde cero con React, Vite y NestJS.',
+      'Migración de sistemas legacy (VB6, ASP) a tecnologías modernas.',
+      'Consultas SQL y PL/SQL sobre bases de datos Oracle.',
+      'Desarrollo de un chatbot con LangChain y LangGraph.',
+    ],
+  },
+  {
+    role: 'Desarrollador Full-Stack',
+    company: 'Fiabilis Consulting Group',
+    location: 'Santiago, Chile',
+    period: 'Dic 2023 — Sep 2024',
+    current: false,
+    bullets: [
+      'Automatización de procesos y web scraping con Selenium y Python para búsqueda de RUTs pensionados.',
+      'Parseo masivo de PDFs con Python para procesamiento de datos.',
+      'Mejora del sistema OCR para optimizar costos operativos.',
+      'Consultas en MySQL y desarrollo de vistas web en PHP.',
+    ],
+  },
+];
+---
+
+<section id="experiencia" class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="section-kicker">02 / experiencia</p>
+      <h2 class="section-title">Experiencia laboral</h2>
+    </div>
+    <div class="timeline">
+      {jobs.map((job) => (
+        <article class="entry reveal">
+          <div class="marker" aria-hidden="true">
+            <span class:list={['dot', { current: job.current }]}></span>
+          </div>
+          <div class="content">
+            <div class="head">
+              <h3>{job.role} · <span class="company">{job.company}</span></h3>
+              <p class="meta">{job.period} — {job.location}</p>
+            </div>
+            <ul>
+              {job.bullets.map((bullet) => (
+                <li>{bullet}</li>
+              ))}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .timeline {
+    position: relative;
+    display: grid;
+    gap: 2.5rem;
+  }
+
+  .entry {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 1.25rem;
+  }
+
+  .marker {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .marker::before {
+    content: '';
+    position: absolute;
+    top: 22px;
+    bottom: -2.5rem;
+    width: 1px;
+    background: linear-gradient(var(--border-strong), transparent);
+  }
+
+  .entry:last-child .marker::before {
+    display: none;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    margin-top: 6px;
+    border-radius: 50%;
+    border: 2px solid var(--purple-deep);
+    background: var(--bg);
+  }
+
+  .dot.current {
+    background: var(--purple);
+    box-shadow: 0 0 14px var(--purple);
+  }
+
+  h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .company {
+    color: var(--purple-light);
+  }
+
+  .meta {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 0.25rem;
+  }
+
+  ul {
+    margin-top: 1rem;
+    padding-left: 1.1rem;
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  li {
+    font-size: 0.92rem;
+    color: var(--muted);
+  }
+
+  li::marker {
+    color: var(--purple);
+  }
+</style>

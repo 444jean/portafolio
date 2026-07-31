@@ -1,0 +1,425 @@
+---
+const heroProject = {
+  name: 'SalesCramer',
+  year: '2025',
+  link: 'https://salescramer.com/',
+  type: 'CRM empresarial · En producción',
+  description:
+    'CRM construido desde cero para reemplazar Salesforce en Cramer: clientes, oportunidades, cotizaciones con generación de PDF, dashboards comerciales y más de una docena de módulos, con un agente de IA integrado.',
+  highlights: [
+    'Chatbot con LangGraph + LangChain (GPT-4o / Gemini) que navega y rellena formularios en vivo, con voz en tiempo real vía ElevenLabs',
+    'Oracle con procedimientos PL/SQL, tiempo real con WebSockets y autenticación empresarial (LDAP + MFA)',
+    'Multiidioma (ES/PT), PWA, dockerizado con CI/CD',
+  ],
+  stack: ['React', 'TypeScript', 'Vite', 'Tailwind', 'NestJS', 'Oracle PL/SQL', 'LangGraph', 'FastAPI', 'Socket.IO', 'Docker'],
+};
+
+const projects = [
+  {
+    name: 'Señalando un Futuro',
+    year: '2024',
+    type: 'Proyecto de título universitario',
+    badge: '★ Proyecto de título',
+    description:
+      'Plataforma web para el aprendizaje de lengua de señas asistido por IA: el sistema analiza la seña realizada por el usuario y entrega retroalimentación en tiempo real.',
+    stack: ['React', 'Next.js', 'NestJS', 'TypeScript', 'Tailwind', 'Prisma'],
+  },
+  {
+    name: 'CommunityPlant',
+    year: '2022',
+    type: 'Aplicación web universitaria',
+    badge: '',
+    description:
+      'Tienda web de productos de jardinería con gestión de usuarios, control de inventarios y operaciones CRUD completas, desplegada en Oracle Cloud.',
+    stack: ['Python', 'Django', 'JavaScript', 'HTML', 'CSS', 'Oracle Cloud'],
+  },
+];
+---
+
+<section id="proyectos" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="section-kicker">01 / proyectos</p>
+      <h2 class="section-title">Proyectos destacados</h2>
+    </div>
+
+    <article class="hero-card reveal">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-content">
+        <div class="top">
+          <span class="year">{heroProject.year}</span>
+          <span class="badge-live"><span class="live-dot" aria-hidden="true"></span> En producción</span>
+        </div>
+        <h3>{heroProject.name}</h3>
+        <p class="type">{heroProject.type}</p>
+        <p class="description">{heroProject.description}</p>
+        <ul class="highlights">
+          {heroProject.highlights.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+        <div class="chips">
+          {heroProject.stack.map((tech) => (
+            <span class="chip">{tech}</span>
+          ))}
+        </div>
+        <a href={heroProject.link} target="_blank" rel="noopener" class="visit">
+          Visitar salescramer.com <span aria-hidden="true">→</span>
+        </a>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="browser">
+          <div class="browser-bar">
+            <span class="b-dot"></span>
+            <span class="b-dot"></span>
+            <span class="b-dot"></span>
+            <span class="url">salescramer.com</span>
+          </div>
+          <div class="browser-body">
+            <div class="msg bot">Hola 👋 soy el asistente de SalesCramer, ¿en qué te ayudo?</div>
+            <div class="msg user">Ayudame a crear una solicitud de muestra</div>
+            <div class="msg bot typing">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="list">
+      {projects.map((project) => (
+        <article class="card reveal">
+          <div class="top">
+            <span class="year">{project.year}</span>
+            {project.badge && <span class="badge">{project.badge}</span>}
+          </div>
+          <h3>{project.name}</h3>
+          <p class="type">{project.type}</p>
+          <p class="description">{project.description}</p>
+          <div class="chips">
+            {project.stack.map((tech) => (
+              <span class="chip">{tech}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ---- Tarjeta hero: SalesCramer ---- */
+  .hero-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 2.5rem;
+    background: linear-gradient(160deg, rgba(124, 58, 237, 0.16), var(--surface) 55%);
+    border: 1px solid var(--border-strong);
+    border-radius: 18px;
+    padding: 2.5rem;
+    margin-bottom: 1.75rem;
+    overflow: hidden;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .hero-card:hover {
+    border-color: var(--purple);
+    box-shadow: 0 16px 60px rgba(124, 58, 237, 0.25);
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 60%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.14), transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-content .top {
+    align-self: stretch;
+  }
+
+  .hero-card h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    background: linear-gradient(120deg, var(--text), var(--purple-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .badge-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: #6ee7a0;
+    background: rgba(110, 231, 160, 0.08);
+    border: 1px solid rgba(110, 231, 160, 0.25);
+    border-radius: 999px;
+    padding: 0.2rem 0.7rem;
+  }
+
+  .live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #6ee7a0;
+    box-shadow: 0 0 8px #6ee7a0;
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    50% {
+      opacity: 0.35;
+    }
+  }
+
+  .highlights {
+    list-style: none;
+    padding: 0;
+    margin: 1.1rem 0 0;
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  .highlights li {
+    font-size: 0.88rem;
+    color: var(--muted);
+    padding-left: 1.3rem;
+    position: relative;
+  }
+
+  .highlights li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--purple);
+  }
+
+  .visit {
+    margin-top: 1.5rem;
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(120deg, var(--purple-deep), var(--purple));
+    padding: 0.65rem 1.4rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px rgba(124, 58, 237, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .visit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(124, 58, 237, 0.5);
+  }
+
+  .visit span {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+
+  .visit:hover span {
+    transform: translateX(3px);
+  }
+
+  /* Maqueta de navegador con chatbot */
+  .hero-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .browser {
+    width: 100%;
+    background: rgba(7, 5, 12, 0.85);
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  }
+
+  .browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 0.9rem;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .b-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(168, 85, 247, 0.35);
+  }
+
+  .url {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--muted);
+    background: rgba(124, 58, 237, 0.1);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.15rem 0.8rem;
+    margin-left: 0.6rem;
+  }
+
+  .browser-body {
+    padding: 1.25rem;
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .msg {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    padding: 0.55rem 0.9rem;
+    border-radius: 12px;
+    max-width: 85%;
+  }
+
+  .msg.bot {
+    background: var(--surface-hover);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    border-bottom-left-radius: 4px;
+    justify-self: start;
+  }
+
+  .msg.user {
+    background: linear-gradient(120deg, var(--purple-deep), var(--purple));
+    color: #fff;
+    border-bottom-right-radius: 4px;
+    justify-self: end;
+  }
+
+  .msg.typing {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+    padding: 0.7rem 0.9rem;
+  }
+
+  .msg.typing span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--purple-light);
+    animation: bounce 1.2s ease-in-out infinite;
+  }
+
+  .msg.typing span:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+
+  .msg.typing span:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  @keyframes bounce {
+    30% {
+      transform: translateY(-4px);
+      opacity: 0.6;
+    }
+  }
+
+  /* ---- Tarjetas secundarias ---- */
+  .list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .card:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(124, 58, 237, 0.18);
+  }
+
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .year {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .badge {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--purple-light);
+  }
+
+  .card h3 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .type {
+    font-size: 0.8rem;
+    color: var(--purple-light);
+    margin-top: 0.2rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-top: 0.9rem;
+  }
+
+  .card .description {
+    flex: 1;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 1.25rem;
+  }
+
+  @media (max-width: 900px) {
+    .hero-card {
+      grid-template-columns: 1fr;
+      padding: 1.75rem;
+    }
+
+    .list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

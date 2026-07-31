@@ -1,0 +1,170 @@
+---
+---
+
+<section class="hero">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="container ">
+    <p class="kicker">jean@dev:~$ whoami</p>
+    <h1>
+      Jean Michel<br />
+      <span class="gradient">Venegas Ascencio</span>
+    </h1>
+    <p class="role">Ingeniero en Informática · Desarrollador Full-Stack</p>
+    <p class="tagline">
+      Construyo aplicaciones web de punta a punta — desde migrar sistemas legacy
+      hasta crear chatbots con IA. Apasionado por el software y la seguridad informática.
+    </p>
+    <div class="actions">
+      <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
+      <a href="https://github.com/444jean" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+      <a href="https://linkedin.com/in/jean-venegas" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+    </div>
+    <p class="location">
+      <span class="dot" aria-hidden="true"></span> Santiago, Chile — disponible para nuevos desafíos
+    </p>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .glow {
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    --max-width: 800px;
+    --max-height: 800px;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.22), transparent 65%);
+    pointer-events: none;
+  }
+
+  .grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(168, 85, 247, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(168, 85, 247, 0.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black, transparent);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black, transparent);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+  }
+
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--purple);
+    margin-bottom: 1.25rem;
+  }
+
+  .kicker::before {
+    content: '> ';
+    color: var(--muted);
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 7vw, 4.75rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
+  .gradient {
+    background: linear-gradient(120deg, var(--purple-light) 10%, var(--purple-deep) 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .role {
+    margin-top: 1.5rem;
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 2.2vw, 1.3rem);
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .tagline {
+    margin-top: 0.9rem;
+    max-width: 34rem;
+    color: var(--muted);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 2.25rem;
+  }
+
+  .btn {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .btn-primary {
+    background: linear-gradient(120deg, var(--purple-deep), var(--purple));
+    color: #fff;
+    box-shadow: 0 4px 24px rgba(124, 58, 237, 0.35);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(124, 58, 237, 0.5);
+  }
+
+  .btn-ghost {
+    border: 1px solid var(--border-strong);
+    color: var(--text);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--purple);
+    transform: translateY(-2px);
+  }
+
+  .location {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 2.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--purple);
+    box-shadow: 0 0 12px var(--purple);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    50% {
+      opacity: 0.4;
+    }
+  }
+</style>

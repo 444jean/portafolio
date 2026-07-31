@@ -1,0 +1,150 @@
+---
+const groups = [
+  {
+    title: 'Lenguajes',
+    icon: '{ }',
+    items: [
+      { name: 'JavaScript', icon: 'javascript' },
+      { name: 'TypeScript', icon: 'typescript' },
+      { name: 'Python', icon: 'python' },
+      { name: 'Java', icon: 'java' },
+      { name: 'SQL', icon: 'sql' },
+      { name: 'PHP', icon: 'php' },
+      { name: 'HTML', icon: 'html5' },
+      { name: 'CSS', icon: 'css3' },
+    ],
+  },
+  {
+    title: 'Frameworks y librerías',
+    icon: '</>',
+    items: [
+      { name: 'React', icon: 'react' },
+      { name: 'Next.js', icon: 'nextjs' },
+      { name: 'NestJS', icon: 'nestjs' },
+      { name: 'Angular', icon: 'angular' },
+      { name: 'Ionic', icon: 'ionic' },
+      { name: 'Django', icon: 'django' },
+      { name: 'FastAPI', icon: 'fastapi' },
+      { name: 'Tailwind', icon: 'tailwind' },
+      { name: 'Bootstrap', icon: 'bootstrap' },
+      { name: 'jQuery', icon: 'jquery' },
+    ],
+  },
+  {
+    title: 'Bases de datos',
+    icon: 'db',
+    items: [
+      { name: 'Oracle · PL/SQL', icon: 'oracle' },
+      { name: 'PostgreSQL', icon: 'postgresql' },
+      { name: 'MySQL', icon: 'mysql' },
+      { name: 'SQL Server', icon: 'sqlserver' },
+      { name: 'MongoDB', icon: 'mongodb' },
+    ],
+  },
+  {
+    title: 'Herramientas, IA y DevOps',
+    icon: '++',
+    items: [
+      { name: 'LangChain', icon: 'langchain' },
+      { name: 'LangGraph', icon: 'langgraph' },
+      { name: 'Docker', icon: 'docker' },
+      { name: 'Vite', icon: 'vite' },
+      { name: 'Socket.IO', icon: 'socketio' },
+      { name: 'Selenium', icon: 'selenium' },
+      { name: 'NumPy', icon: 'numpy' },
+      { name: 'Pandas', icon: 'pandas' },
+      { name: 'Git', icon: 'git' },
+      { name: 'GitLab CI', icon: 'gitlab' },
+      { name: 'Azure', icon: 'azure' },
+      { name: 'Playwright', icon: 'playwright' },
+      { name: 'Swagger · API REST', icon: 'swagger' },
+    ],
+  },
+];
+---
+
+<section id="habilidades" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="section-kicker">03 / habilidades</p>
+      <h2 class="section-title">Habilidades técnicas</h2>
+    </div>
+    <div class="grid">
+      {groups.map((group) => (
+        <article class="card reveal">
+          <header>
+            <span class="icon">{group.icon}</span>
+            <h3>{group.title}</h3>
+          </header>
+          <div class="chips">
+            {group.items.map((item) => (
+              <span class="chip">
+                <img src={`/icons/${item.icon}.svg`} alt="" width="15" height="15" loading="lazy" />
+                {item.name}
+              </span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.6rem;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .card:hover {
+    border-color: var(--border-strong);
+    background: var(--surface-hover);
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .icon {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--purple-light);
+    background: rgba(124, 58, 237, 0.15);
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    width: 2.4rem;
+    height: 2.4rem;
+    display: grid;
+    place-items: center;
+  }
+
+  h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 720px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
