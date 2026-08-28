@@ -1,28 +1,82 @@
 ---
+const roles = [
+  "Desarrollador Full-Stack",
+  "Desarrollador React y Node.js",
+  "Prompt Engineering y LLMs",
+];
+
+const stack = [
+  { name: "React", icon: "react" },
+  { name: "TypeScript", icon: "typescript" },
+  { name: "JavaScript", icon: "javascript" },
+  { name: "Vite", icon: "vite" },
+  { name: "NestJS", icon: "nestjs" },
+  { name: "Oracle · PL/SQL", icon: "oracle" },
+  { name: "LangChain", icon: "langchain" },
+  { name: "Python", icon: "python" },
+  { name: "Docker", icon: "docker" },
+];
 ---
 
 <section class="hero">
   <div class="glow" aria-hidden="true"></div>
   <div class="grid-bg" aria-hidden="true"></div>
-  <div class="container ">
-    <p class="kicker">jean@dev:~$ whoami</p>
-    <h1>
-      Jean Michel<br />
-      <span class="gradient">Venegas Ascencio</span>
-    </h1>
-    <p class="role">Ingeniero en Informática · Desarrollador Full-Stack</p>
-    <p class="tagline">
-      Construyo aplicaciones web de punta a punta — desde migrar sistemas legacy
-      hasta crear chatbots con IA. Apasionado por el software y la seguridad informática.
-    </p>
-    <div class="actions">
-      <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
-      <a href="https://github.com/444jean" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
-      <a href="https://linkedin.com/in/jean-venegas" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <p class="kicker">jean@dev:~$ whoami</p>
+      <h1>
+        Jean Michel<br />
+        <span class="gradient">Venegas Ascencio</span>
+      </h1>
+      <p class="role">
+        Ingeniero en Informática<span class="sep" aria-hidden="true"> · </span>
+        <span class="typed" aria-live="off" data-phrases={JSON.stringify(roles)}>
+          <span class="typed-text">{roles[0]}</span><span class="cursor" aria-hidden="true"></span>
+        </span>
+      </p>
+      <p class="tagline">
+        Construyo aplicaciones web de punta a punta — desde migrar sistemas legacy
+        hasta crear chatbots con IA. Apasionado por el software y la Inteligencia Artificial.
+      </p>
+      <div class="stack">
+        <p class="stack-label">stack principal</p>
+        <ul class="stack-list" aria-label="Stack principal">
+          {stack.map((tech) => (
+            <li class="chip">
+              <img src={`/icons/${tech.icon}.svg`} alt="" width="15" height="15" />
+              {tech.name}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="actions">
+        <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
+        <a href="/Jean-Venegas-CV.pdf" download="Jean-Venegas-CV.pdf" class="btn btn-ghost btn-cv">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3v12" /><path d="m7 10 5 5 5-5" /><path d="M5 21h14" />
+          </svg>
+          Descargar CV
+        </a>
+        <a href="https://github.com/444jean" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+        <a href="https://linkedin.com/in/jean-venegas" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+      </div>
+      <p class="location">
+        <span class="dot" aria-hidden="true"></span> Santiago, Chile — disponible para nuevos desafíos
+      </p>
     </div>
-    <p class="location">
-      <span class="dot" aria-hidden="true"></span> Santiago, Chile — disponible para nuevos desafíos
-    </p>
+
+    <div class="hero-photo">
+      <div class="photo-ring">
+        <img
+          src="/assets/foto_perfil_jean.jpg"
+          alt="Foto de perfil de Jean Michel Venegas Ascencio"
+          width="400"
+          height="400"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
   </div>
 </section>
 
@@ -61,9 +115,60 @@
 
   .hero-inner {
     position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 3rem;
     padding-top: 6rem;
     padding-bottom: 4rem;
   }
+
+  .hero-text {
+    min-width: 0;
+  }
+
+  /* ---------- Foto de perfil ---------- */
+
+  .hero-photo {
+    justify-self: end;
+  }
+
+  .photo-ring {
+    --size: clamp(200px, 24vw, 280px);
+    width: var(--size);
+    height: var(--size);
+    padding: 5px;
+    border-radius: 50%;
+    background: conic-gradient(
+      from 200deg,
+      var(--purple-light),
+      var(--purple-deep),
+      var(--purple),
+      var(--purple-light)
+    );
+    box-shadow:
+      0 0 0 1px rgba(168, 85, 247, 0.25),
+      0 20px 60px rgba(124, 58, 237, 0.4);
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .photo-ring img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 20%;
+    border: 4px solid var(--bg);
+    background: var(--surface);
+  }
+
+  @keyframes float {
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* ---------- Texto ---------- */
 
   .kicker {
     font-family: var(--font-mono);
@@ -98,12 +203,92 @@
     font-size: clamp(1rem, 2.2vw, 1.3rem);
     font-weight: 500;
     color: var(--text);
+    min-height: 1.7em;
+  }
+
+  .typed {
+    display: inline;
+    white-space: nowrap;
+  }
+
+  .typed-text {
+    color: var(--purple-light);
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    margin-left: 3px;
+    vertical-align: -0.12em;
+    background: var(--purple);
+    box-shadow: 0 0 8px var(--purple);
+    animation: blink 1s step-end infinite;
+  }
+
+  .typed.typing .cursor {
+    animation: none;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  /* En pantallas angostas la frase animada baja a su propia línea */
+  @media (max-width: 1024px) {
+    .sep {
+      display: none;
+    }
+
+    .typed {
+      display: block;
+      min-height: 1.7em;
+    }
   }
 
   .tagline {
     margin-top: 0.9rem;
     max-width: 34rem;
     color: var(--muted);
+  }
+
+  .stack {
+    margin-top: 1.6rem;
+  }
+
+  .stack-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+
+  .stack-label::before {
+    content: "// ";
+    color: var(--purple);
+  }
+
+  .stack-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    max-width: 36rem;
+  }
+
+  .stack-list .chip {
+    color: var(--text);
+    background: rgba(124, 58, 237, 0.16);
+    border-color: var(--border-strong);
+  }
+
+  .btn-cv {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .actions {
@@ -167,4 +352,83 @@
       opacity: 0.4;
     }
   }
+
+  /* ---------- Móvil / tablet: foto pequeña sobre el nombre ---------- */
+
+  @media (max-width: 860px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      padding-top: 7rem;
+    }
+
+    .hero-photo {
+      order: -1;
+      justify-self: start;
+    }
+
+    .photo-ring {
+      --size: 120px;
+      padding: 3px;
+      animation: none;
+    }
+
+    .photo-ring img {
+      border-width: 3px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .photo-ring,
+    .dot,
+    .cursor {
+      animation: none;
+    }
+  }
 </style>
+
+<script>
+  const el = document.querySelector<HTMLElement>(".typed");
+  const textEl = el?.querySelector<HTMLElement>(".typed-text");
+  const phrases: string[] = el ? JSON.parse(el.dataset.phrases ?? "[]") : [];
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (el && textEl && phrases.length > 1 && !reduceMotion) {
+    const TYPE_MS = 55;
+    const ERASE_MS = 30;
+    const HOLD_MS = 2000;
+    const GAP_MS = 400;
+
+    const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+    const erase = async (text: string) => {
+      el.classList.add("typing");
+      for (let i = text.length - 1; i >= 0; i--) {
+        textEl.textContent = text.slice(0, i);
+        await sleep(ERASE_MS);
+      }
+      el.classList.remove("typing");
+    };
+
+    const type = async (text: string) => {
+      el.classList.add("typing");
+      for (let i = 1; i <= text.length; i++) {
+        textEl.textContent = text.slice(0, i);
+        await sleep(TYPE_MS);
+      }
+      el.classList.remove("typing");
+    };
+
+    (async () => {
+      let index = 0;
+      await sleep(HOLD_MS);
+      while (true) {
+        await erase(phrases[index]);
+        await sleep(GAP_MS);
+        index = (index + 1) % phrases.length;
+        await type(phrases[index]);
+        await sleep(HOLD_MS);
+      }
+    })();
+  }
+</script>

@@ -22,7 +22,8 @@ const projects = [
     badge: '★ Proyecto de título',
     description:
       'Plataforma web para el aprendizaje de lengua de señas asistido por IA: el sistema analiza la seña realizada por el usuario y entrega retroalimentación en tiempo real.',
-    stack: ['React', 'Next.js', 'NestJS', 'TypeScript', 'Tailwind', 'Prisma'],
+    stack: ['React', 'Next.js', 'NestJS', 'TypeScript', 'Tailwind', 'Prisma', 'PostgreSQL'],
+    link: 'https://senalando-un-futuro.vercel.app/',
   },
   {
     name: 'CommunityPlant',
@@ -63,9 +64,9 @@ const projects = [
             <span class="chip">{tech}</span>
           ))}
         </div>
-        <a href={heroProject.link} target="_blank" rel="noopener" class="visit">
+        <!-- <a href={heroProject.link} target="_blank" rel="noopener" class="visit">
           Visitar salescramer.com <span aria-hidden="true">→</span>
-        </a>
+        </a> -->
       </div>
       <div class="hero-visual" aria-hidden="true">
         <div class="browser">
@@ -101,6 +102,11 @@ const projects = [
               <span class="chip">{tech}</span>
             ))}
           </div>
+          {project.link && (
+            <a href={project.link} target="_blank" rel="noopener" class="visit">
+              Visitar {project.name} <span aria-hidden="true">→</span>
+            </a>
+          )}
         </article>
       ))}
     </div>
@@ -211,6 +217,7 @@ const projects = [
   }
 
   .visit {
+    align-self: flex-start;
     margin-top: 1.5rem;
     font-family: var(--font-display);
     font-size: 0.9rem;
